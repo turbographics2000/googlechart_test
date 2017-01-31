@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+      var options = {
+              fontName: 'Roboto',
+              title: "テスト",
+              titlePosition:'none',
+              width: '100%',
+              height: '100%',
+              bar: {groupWidth: "100%"},
+              legend: { position: "none"},
+              tooltip: {
+                  trigger: 'both',
+                  isHtml: true
+              },
+              hAxis:{
+                  gridlines:{color: 'none', count:5},
+                  baselineColor: 'none',
+                  textPosition: 'out'
+              },
+              vAxis:{
+                  gridlines:{color: 'none', count:3},
+                  baselineColor: 'none',
+                  textPosition: 'none'
+              },
+              animation: {
+                  duration: 700,
+                  easing: 'inAndOut',
+                  startup: true,
+                  delay: 2
+              },
+              //chartArea: {top: 10,  bottom: 0, width: '100%'}
+          chartArea: {'width':'200%', 'height':'100%', 'left':100}
+
+          };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+
+
+    </script>
+<style type="text/css">
+ div#curve_chart {position: absolute;
+     top: 100px;
+ }
+ </style>
+  </head>
+
+  <body>
+  <div id="curve_chart" style="width: 100%; height: 35%; position: absolute; bottom: 0px"></div>
+  </body>
+  </html>
